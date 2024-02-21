@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:th="thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome to Persons List</title>
+</head>
+<body>
+      <h3>Welcome to the list of persons</h3>
+      <p>Here you will see the list</p>
+
+      <table>
+          <tr th:each="person, rowwStat: ${persons}">
+              <td th:text="${rowStat}">No</td>
+              <td th:text="${person.fName}">First Name</td>
+              <td th:each="${person.lName}">Last Name</td>
+          </tr>
+      </table>
+</body>
+</html>
