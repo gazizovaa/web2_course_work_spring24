@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/products")
-@SessionAttributes({"order"})
+@SessionAttributes({"cart"})
 public class ProductsController {
 
     @GetMapping({"/list", "/"})
-    public String listProducts(Model model, @ModelAttribute Order order){
-        model.addAttribute("order",order == null?new Order() : order);
+    public String listProducts(Model model, @ModelAttribute("cart") Order cart){
+        model.addAttribute("cart",cart == null?new Order() : cart);
         return "products/list";
     }
 
@@ -24,7 +24,7 @@ public class ProductsController {
         return "redirect:/products/";
     }
 
-    @ModelAttribute
+    @ModelAttribute("cart")
     public Order order(){
         return new Order();
     }

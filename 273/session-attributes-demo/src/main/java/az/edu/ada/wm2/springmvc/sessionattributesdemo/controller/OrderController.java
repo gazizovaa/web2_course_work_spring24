@@ -13,7 +13,7 @@ import org.springframework.web.context.request.WebRequest;
 public class OrderController {
 
     @GetMapping("/")
-    public String listOrderDetails(@SessionAttribute Order order, Model model){
+    public String listOrderDetails(@SessionAttribute("cart") Order order, Model model){
         model.addAttribute("order", order);
         return "orders/order_detail";
     }

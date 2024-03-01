@@ -12,13 +12,14 @@
 </head>
 <body>
 
-<form action="#" method="POST" th:action="@{/products/addToOrder}" th:object="${order}">
+<form action="#" method="POST" th:action="@{/products/addToOrder}" th:object="${cart}">
     Select the product:
     <input type="text" th:name="product" placeholder="Product id"/> <br/>
     <input type="submit" value="Add product"/>
 </form>
 
-<!--<p th:text="${#ctx.session.order}">Test</p>-->
+<h3>Cart object</h3>
+<<p th:text="${#ctx.session.order}">Test</p>
 <a th:href="@{/orders/}">Check the order</a>
 
 </body>
