@@ -17,10 +17,10 @@
 <p th:if="${order} != null and ${#lists.isEmpty(order.products)}">The order is empty.</p>
 
 <ul th:each="product : ${order.products}">
-    <li th:text="${product}">Product Id</li>
+    <li th:text="${product}">Product Name</li>
 </ul>
 
-<form action="#" method="POST" th:action="@{/orders/save}" th:object="${order}">
+<form action="#" method="POST" th:action="@{/order/save}" th:object="${order}">
     Enter your name:
     <input type="text" th:field="*{customerName}" placeholder="Customer name"/> <br/>
     <input type="submit" value="Save order"/>

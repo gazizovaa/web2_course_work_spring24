@@ -1,31 +1,36 @@
 package az.edu.ada.wm2.springmvc.sessionattributesdemo.controller;
 
 import az.edu.ada.wm2.springmvc.sessionattributesdemo.model.Order;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/products")
+@RequestMapping("/product")
 @SessionAttributes({"cart"})
 public class ProductsController {
 
-    @GetMapping({"/list", "/"})
-    public String listProducts(Model model, @ModelAttribute("cart") Order cart){
-        model.addAttribute("cart",cart == null?new Order() : cart);
+    @GetMapping({"", "/", "/list"})
+    public String displayProducts(Model model, @ModelAttribute("cart") Order cart){
+        model.addAttribute("cart",cart == null ? new Order() : cart);
         return "products/list";
     }
 
-    @PostMapping("addToOrder")
-    public String addProductToOrder(@RequestParam("product") String productId,
-                                    @ModelAttribute Order order){
-        order.addProduct(productId);
-        return "redirect:/products/";
+    @PostMapping("/addToOrder")
+    public String addProduct(@RequestParam("product") String prodName,
+                                    @ModelAttribute("cart") Order cart){
+        System.out.println("----Before adding: " + cart);
+
+        if(prodName != null || !prodName.isBlank())
+            cart.addProduct(prodName);
+
+        System.out.println("----After adding: " + cart);
+
+        return "redirect:/product";
     }
 
     @ModelAttribute("cart")
-    public Order order(){
+    private Order cart(){
         return new Order();
     }
 

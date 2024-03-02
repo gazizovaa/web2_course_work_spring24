@@ -13,8 +13,8 @@ public class DemoController {
 
     @GetMapping("/path1")
     public String redirectTheRequest(Model model){
+        System.out.println("----path 1");
         model.addAttribute("principal", "Gulnara");
-        System.out.println("This is a path1");
         return "redirect:/demo/path2";
     }
 
