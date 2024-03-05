@@ -17,14 +17,14 @@ public class ProductsController {
     }
 
     @PostMapping("/addToOrder")
-    public String addProduct(@RequestParam("product") String prodName,
-                                    @ModelAttribute("cart") Order cart){
-        System.out.println("----Before adding: " + cart);
+    public String addProduct(@ModelAttribute("cart") Order cart,
+                             @RequestParam("product") String prodName){
+        System.out.println("Before adding: " + cart);
 
         if(prodName != null || !prodName.isBlank())
             cart.addProduct(prodName);
 
-        System.out.println("----After adding: " + cart);
+        System.out.println("After adding: " + cart);
 
         return "redirect:/product";
     }

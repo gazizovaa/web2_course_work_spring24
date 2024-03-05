@@ -29,6 +29,6 @@ public class OrderController {
         ss.setComplete();
 
         //webRequest.removeAttribute("cart", 1);
-        return "redirect:/products/list";
+        return "redirect:/product/list";
     }
 }
